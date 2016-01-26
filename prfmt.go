@@ -34,17 +34,18 @@ func argsToAttributes(a []string) map[string]string {
 
 func (p *PuppetResource) printResource() {
   fmt.Printf("%s { '%s':\n", p.Type, p.Title)
-  printAttributes(p.Attributes)
+  printAttributes(1, p.Attributes)
   fmt.Println("}")
 }
 
-func printAttributes(attributes map[string]string) {
+func printAttributes(indentLevel int, attributes map[string]string) {
   longestKeyLength := longestKeyLength(attributes)
   for k, v := range attributes {
     keyLength := len(k)
     numberOfSpaces := longestKeyLength - keyLength + 1
     spaces := strings.Repeat(" ", numberOfSpaces)
-    fmt.Printf("  %s%s=> '%s',\n", k, spaces, v)
+    indent := strings.Repeat(" ", indentLevel * 2)
+    fmt.Printf("%s%s%s=> '%s',\n", indent, k, spaces, v)
   }
 }
 
