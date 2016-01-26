@@ -27,6 +27,10 @@ func argsToAttributes(a []string) map[string]string {
   attribs := make(map[string]string)
   for _, e := range(a) {
     s := strings.Split(e, "=")
+    if len(s) < 2 {
+      fmt.Printf("ERROR: %s is not a key=value pair!\n", e)
+      os.Exit(1)
+    }
     attribs[s[0]] = s[1]
   }
   return attribs
