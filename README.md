@@ -16,6 +16,12 @@ file { '/tmp/test':
 }
 ```
 
+## Building
+
+```
+go build cmd/prfmt.go
+```
+
 ## Limitations
 
 Right now this only formats resources with string parameters so you're SOL if you want to format a resource with a Hash or Array as a parameter value. It's also not very smart about quoting.
