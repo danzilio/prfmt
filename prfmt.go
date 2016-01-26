@@ -48,16 +48,6 @@ func printAttributes(attributes map[string]string) {
   }
 }
 
-func formatAttributes(attributes map[string]string) {
-  longestKeyLength := longestKeyLength(attributes)
-  for k, v := range attributes {
-    keyLength := len(k)
-    numberOfSpaces := longestKeyLength - keyLength + 1
-    spaces := strings.Repeat(" ", numberOfSpaces)
-    fmt.Printf("  %s%s=> %s,\n", k, spaces, v)
-  }
-}
-
 func longestKeyLength(attributes map[string]string) int {
   var length int
   for k, _ := range attributes {
